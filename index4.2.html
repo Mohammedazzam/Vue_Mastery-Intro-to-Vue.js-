@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="main2.css" >
+  </head>
+  <body>
+      
+    <div class="nav-bar"></div>
+
+        <div id="app">
+
+          <div class="product">
+
+            <div class="product-image">
+              <img :src="image" />
+            </div>
+
+           <div class="product-info">
+              <h1>{{ product }}</h1>
+              <p v-if="inStock">In Stock</p>
+              <p v-else>Out of Stock</p>
+
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
+
+          <ul>
+            <li v-for="size in sizes">{{ size }}</li>
+          </ul>
+
+
+          <div v-for="variant in variants" :key="variant.variantId">
+            <p>{{ variant.variantColor }}</p>
+          </div>
+
+    </div>  
+
+          </div>
+
+        </div> 
+
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+<script>
+       var app = new Vue({
+              el: '#app',
+              data: {
+                product: 'Socks',
+                image: './assets/green-socks.png',
+                 inStock: true,
+                    details: ['80% cotton', '20% polyester', 'Gender-neutral'],
+                  
+                    variants: [
+                      {
+                        variantId: 2234,
+                        variantColor: 'green'    
+                      },
+                      {
+                        variantId: 2235,
+                        variantColor: 'blue'
+                      }
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                  } 
+              
+            })
+      </script>
+  </body>
+</html>
