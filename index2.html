@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="main2.css" >
+  </head>
+  <body>
+      
+    <div class="nav-bar"></div>
+
+        <div id="app">
+
+          <div class="product">
+
+            <div class="product-image">
+              <img :src="image" /> 
+            </div>
+
+            <div class="product-info">
+              <h1>{{ product }}</h1>
+              <a :href="link" target="_blank">More products like this</a>
+            </div>
+
+          </div>
+
+        </div> 
+
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+       var app = new Vue({
+              el: '#app',
+              data: {
+                product: 'Socks',
+                image: './assets/green-socks.png',
+                link: 'https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks'
+              } 
+            })
+      </script>
+  </body>
+</html>
