@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="main2.css" >
+  </head>
+  <body>
+      
+    <div class="nav-bar"></div>
+
+        
+<div id="app">
+  
+  <div class="product">
+        
+    <div class="product-image">
+      <img :src="image" />
+    </div>
+
+    <div class="product-info">
+      <h1>{{ product }}</h1>
+          <p v-if="inStock">In Stock</p>
+          <p v-else>Out of Stock</p>
+
+      <ul>
+        <li v-for="detail in details">{{ detail }}</li>
+      </ul>
+
+      <div v-for="variant in variants" :key="variant.variantId">
+        <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+      </div>
+
+      <button v-on:click="addToCart">Add to cart</button>
+      <button @click="removeFromCart">Remove from cart</button>
+
+
+      <div class="cart">
+        <p>Cart({{ cart }})</p>
+      </div>
+
+    </div>  
+
+          </div>
+
+        </div> 
+
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+       var app = new Vue({
+              el: '#app',
+              data: {
+                product: 'Socks',
+                image: './assets/green-socks.png',
+                 inStock: true,
+                details: ['80% cotton', '20% polyester', 'Gender-neutral'],
+                variants: [
+                  {
+                    variantId: 2234,
+                    variantColor: 'green',
+                    variantImage: './assets/green-socks.png'
+                  },
+                  {
+                    variantId: 2235,
+                    variantColor: 'blue',
+                    variantImage: './assets/blue-socks.png'
+                  }
+                ],
+                cart: 0
+              },
+              methods: {
+                addToCart() {
+                  this.cart += 1
+                },
+                updateProduct(variantImage) {
+                  this.image = variantImage
+                },
+                removeFromCart() {
+                  this.cart -= 1
+                }
+              }
+            })
+      </script>
+  </body>
+</html>
